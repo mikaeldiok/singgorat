@@ -44,8 +44,12 @@
                     <hr>
                     <div class="text-left">
                         <h2 class="my-3">Tanggapan</h2>   
-                        @if(count($$module_name_singular->remarks) > 1)    
+                            {{\Log::debug('$$module_name_singula')}}  
+                            {{\Log::debug('$$module_name_singular->remarks')}}  
+                        @if(count($$module_name_singular->remarks) > 1)  
+                            {{\Log::debug('yes comment')}}  
                             @foreach($$module_name_singular->remarks as $remark)
+                                {{\Log::debug('$remark')}}  
                                 <div class="row m-2">
                                     <div class="col-lg-12">
                                         <div class="card">
