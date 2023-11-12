@@ -2,21 +2,6 @@
 
 return [
     'dashboard'             => 'Beranda',
-    'registrants'           => 'Pendaftar',
-    'message_trackers'      => 'Lacak Pesan',
-
-    'finance' => [
-        'title'             => 'Keuangan',
-        'installments'      => 'Angsuran',
-    ],
-
-    'core' => [
-        'title'             => 'Data Inti',
-        'paths'             => 'Jalur Pendaftaran',
-        'periods'           => 'Periode',
-        'units'             => 'Unit',
-        'tiers'             => 'Kelas / Jurusan',
-    ],
 
     'school' => [
         'title'             => 'Sekolah',
@@ -28,6 +13,11 @@ return [
         'title'             => 'Seratan',
         'reports'           => 'Seratan',
         'types'             => 'Kategori',
+    ],
+
+    'feedback' => [
+        'title'             => 'Tanggapan',
+        'remarks'           => 'Tanggapan',
     ],
 
     'blog' => [

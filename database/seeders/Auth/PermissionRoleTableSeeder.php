@@ -26,6 +26,7 @@ class PermissionRoleTableSeeder extends Seeder
         $admin = Role::firstOrCreate(['name' => 'administrator']);
         $executive = Role::firstOrCreate(['name' => 'kepala']);
         $user = Role::firstOrCreate(['name' => 'user']);
+        $guru = Role::firstOrCreate(['name' => 'guru']);
 
         // Create Permissions
         Permission::firstOrCreate(['name' => 'view_backend']);
@@ -73,6 +74,11 @@ class PermissionRoleTableSeeder extends Seeder
         ]);
         echo "\n _Types_ Permissions Created.";
 
+        \Artisan::call('auth:permission', [
+            'name' => 'remarks',
+        ]);
+        echo "\n _Types_ Permissions Created.";
+
 
         echo "\n\n";
 
@@ -80,7 +86,7 @@ class PermissionRoleTableSeeder extends Seeder
         $admin->givePermissionTo(Permission::all());
         $executive->givePermissionTo('view_backend');
         
-        // $user->givePermissionTo(['view_backend','view_reports','show_reports','create_reports']);
+        $user->givePermissionTo(['view_backend','view_reports','view_remarks','add_remarks','edit_remarks','delete_remarks','restore_remarks']);
 
         Schema::enableForeignKeyConstraints();
     }

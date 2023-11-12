@@ -32,18 +32,18 @@ class GenerateMenus
                 'class' => 'c-sidebar-nav-link',
             ]);
 
-            $menu->add('<i class="fas fa-th c-sidebar-nav-icon"></i> '.trans('menu.reporting.types'), [
-                'route' => 'backend.types.index',
-                'class' => 'c-sidebar-nav-item',
-            ])
-            ->data([
-                'order' => 4,
-                'activematches' => ['admin/types*'],
-                'permission' => ['view_types'],
-            ])
-            ->link->attr([
-                'class' => 'c-sidebar-nav-link',
-            ]);
+            // $menu->add('<i class="fas fa-th c-sidebar-nav-icon"></i> '.trans('menu.reporting.types'), [
+            //     'route' => 'backend.types.index',
+            //     'class' => 'c-sidebar-nav-item',
+            // ])
+            // ->data([
+            //     'order' => 4,
+            //     'activematches' => ['admin/types*'],
+            //     'permission' => ['view_types'],
+            // ])
+            // ->link->attr([
+            //     'class' => 'c-sidebar-nav-link',
+            // ]);
 
         })->sortBy('order');
 
