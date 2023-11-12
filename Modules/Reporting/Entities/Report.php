@@ -151,6 +151,11 @@ class Report extends UserModel implements HasMedia
     
     public function remarks()
     {
+        return $this->hasMany('Modules\Feedback\Entities\Remark');
+    }
+    
+    public function selectedRemarks()
+    {
         if(auth()->user() == null){
             return $this->hasMany('Modules\Feedback\Entities\Remark');
         }else{

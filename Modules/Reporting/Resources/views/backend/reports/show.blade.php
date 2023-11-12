@@ -83,7 +83,7 @@
                 <hr>
                 <h3>Tanggapan Anda</h3>   
                 @if($$module_name_singular->remarks)  
-                    @foreach($$module_name_singular->remarks as $remark)
+                    @foreach($$module_name_singular->selectedRemarks as $remark)
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
