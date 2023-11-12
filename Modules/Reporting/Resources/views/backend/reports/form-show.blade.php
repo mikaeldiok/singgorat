@@ -42,19 +42,28 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-6">
-        <div class="form-group">
-            <?php
-            $field_name = 'status';
-            $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
-            $select_options = $options['status'];
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+    <?php
+        $field_name = 'status';
+        $field_lable = __("reporting::$module_name.$field_name");
+        $field_placeholder = $field_lable;
+        $required = "required";
+        $select_options = $options['status'];
+        ?>
+        @can('edit_'.$module_name)
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
+                {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+            </div>    
         </div>
-    </div>
+        @else
+            <div class="col-lg-2">
+                <h5>{{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}<h5>
+            </div>
+            <div class="col-lg-10">
+            <h5> : <span class="font-weight-bold">{{$report->$field_name}}</span><h5>
+            </div>
+        @endcan
 </div>
 <div class="row">
     <div class="col-lg-12">

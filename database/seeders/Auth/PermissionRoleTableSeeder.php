@@ -30,6 +30,7 @@ class PermissionRoleTableSeeder extends Seeder
 
         // Create Permissions
         Permission::firstOrCreate(['name' => 'view_backend']);
+        Permission::firstOrCreate(['name' => 'list_remarks']);
         Permission::firstOrCreate(['name' => 'edit_settings']);
         Permission::firstOrCreate(['name' => 'view_logs']);
 
@@ -86,7 +87,7 @@ class PermissionRoleTableSeeder extends Seeder
         $admin->givePermissionTo(Permission::all());
         $executive->givePermissionTo('view_backend');
         
-        $user->givePermissionTo(['view_backend','view_reports','view_remarks','add_remarks','edit_remarks','delete_remarks','restore_remarks']);
+        $guru->givePermissionTo(['view_backend','view_reports','view_remarks','add_remarks','edit_remarks','delete_remarks','restore_remarks']);
 
         Schema::enableForeignKeyConstraints();
     }

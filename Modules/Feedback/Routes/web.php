@@ -13,12 +13,12 @@
 
 /*
 *
-* Auth Routes
+* Frontend Routes
 *
 * --------------------------------------------------------------------
 */
-// Route::group(['namespace' => '\Modules\Feedback\Http\Controllers\Auth', 'as' => 'auth.', 'middleware' => 'web', 'prefix' => ''], function () {
-    
+// Route::group(['namespace' => '\Modules\Feedback\Http\Controllers\Frontend', 'as' => 'frontend.', 'middleware' => ['web'], 'prefix' => ''], function () {
+
 //     /*
 //      *
 //      *  Feedbacks Routes
@@ -26,37 +26,12 @@
 //      * ---------------------------------------------------------------------
 //      */
 //     $module_name = 'remarks';
-//     $controller_name = 'RemarksController'; 
-    
-//     Route::get("$module_name/login", ['as' => "$module_name.login", 'uses' => "$controller_name@showLoginForm"]);
-//     Route::post("$module_name/login", ['as' => "$module_name.login", 'uses' => "$controller_name@login"]);
-//     Route::get("$module_name/register", ['as' => "$module_name.register", 'uses' => "$controller_name@showRegisterForm"]);
-//     Route::post("$module_name/register", ['as' => "$module_name.register", 'uses' => "$controller_name@register"]);
-//     Route::get("$module_name/logout", ['as' => "$module_name.logout", 'uses' => "$controller_name@logout"]);
-    
+//     $controller_name = 'RemarksController';        
+//     Route::resource("$module_name", "$controller_name");
+//     Route::get("/artikel", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
+//     Route::get("$module_name/catalog/filter", ['as' => "$module_name.filterRemarks", 'uses' => "$controller_name@filterRemarks"]);
+//     Route::get("$module_name/{id}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
 // });
-
-/*
-*
-* Frontend Routes
-*
-* --------------------------------------------------------------------
-*/
-Route::group(['namespace' => '\Modules\Feedback\Http\Controllers\Frontend', 'as' => 'frontend.', 'middleware' => ['web'], 'prefix' => ''], function () {
-
-    /*
-     *
-     *  Feedbacks Routes
-     *
-     * ---------------------------------------------------------------------
-     */
-    $module_name = 'remarks';
-    $controller_name = 'RemarksController';        
-    Route::resource("$module_name", "$controller_name");
-    Route::get("/artikel", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
-    Route::get("$module_name/catalog/filter", ['as' => "$module_name.filterRemarks", 'uses' => "$controller_name@filterRemarks"]);
-    Route::get("$module_name/{id}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
-});
 
 /*
 *

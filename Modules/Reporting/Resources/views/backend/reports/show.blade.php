@@ -34,10 +34,12 @@
                 {{ html()->modelForm($$module_name_singular, 'PATCH', route("backend.$module_name.update", $$module_name_singular))->class('form')->attributes(['enctype'=>"multipart/form-data"])->open() }}
 
                 @include ("reporting::backend.$module_name.form-show")
+                
+                @can('edit_reports')
                 <div class="row">
                     <div class="col-4">
                         <div class="form-group">
-                            {{ html()->submit($text = icon('fas fa-save')." Save")->class('btn btn-success') }}
+                            {{ html()->submit($text = icon('fas fa-save')." Save Status")->class('btn btn-success') }}
                         </div>
                     </div>
 
@@ -47,9 +49,60 @@
                         </div>
                     </div>
                 </div>
+                @endcan
 
                 {{ html()->form()->close() }}
+               <hr>
+                <div class="row mt-4">
+                    <div class="col">
+                        
+                        <h3>Tulis Tanggapan</h3>  
+                        {{ html()->form('POST', route("backend.remarks.store"))->class('form')->attributes(['enctype'=>"multipart/form-data"])->open() }}
 
+                        @include ("feedback::backend.remarks.form")
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    {{ html()->button($text = "<i class='fas fa-message'></i> " . ucfirst("Send") . "", $type = 'submit')->class('btn btn-success') }}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="float-right">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-warning" onclick="history.back(-1)"><i class="fas fa-reply"></i> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{ html()->form()->close() }}
+
+                    </div>
+                </div>    
+                <hr>
+                <h3>Tanggapan Anda</h3>   
+                @if(count($$module_name_singular->remarks) > 1)    
+                    @foreach($$module_name_singular->remarks as $remark)
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>{{$remark->user->first_name}} {{$remark->user->last_name}}</h5>
+                                        <p>
+                                           {{$remark->comment}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <p>
+                        No Comments
+                    </p>
+                @endif
+                
             </div>
         </div>
     </div>

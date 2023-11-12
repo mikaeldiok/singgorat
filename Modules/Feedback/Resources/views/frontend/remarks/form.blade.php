@@ -1,61 +1,20 @@
-<div class="row">
-    <div class="col-lg-12">
-        <div class="form-group">
-            <?php
-            $field_name = 'remarker';
-            $field_lable = __("feedback::$module_name.$field_name");
-            $field_placeholder = '';
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="form-group">
-            <?php
-            $field_name = 'kelas';
-            $field_lable = __("feedback::$module_name.$field_name")." Anak";
-            $field_placeholder = '--Silakan pilih--';
-            $select_options = config('kelas');
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="form-group">
-            <?php
-            $field_name = 'title';
-            $field_lable = __("feedback::$module_name.$field_name");
-            $field_placeholder = '';
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="form-group">
-            <?php
-            $field_name = 'content';
-            $field_lable = "Topik Hari ini";
-            $field_placeholder = 'Isi artikel disini';
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image','rows'=>5]) }}
-        </div>
-    </div>
-</div>
+{{ html()->hidden('user_id',auth()->user()->id)->class('form-control')}}
+{{ html()->hidden('report_id',$$module_name_singular->id)->class('form-control')}}
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-group">
+            <?php
+            $field_name = 'comment';
+            $field_lable = __("feedback::$module_name.$field_name");
+            $field_placeholder = "isi dengan komentar anda";
+            $required = "required";
+            ?>
+            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
+            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image', 'rows'=>5]) }}
+        </div>
+    </div>
+</div>
 <!-- Select2 Library -->
 <x-library.select2 />
 <x-library.datetime-picker />
@@ -69,7 +28,6 @@
 
 <!-- Date Time Picker & Moment Js-->
 <script type="text/javascript">
-    
 $(function() {
     var date = moment("{{$$module_name_singular->birth_date ?? ''}}", 'YYYY-MM-DD').toDate();
     $('.datetime').datetimepicker({

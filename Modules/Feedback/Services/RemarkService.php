@@ -437,18 +437,9 @@ class RemarkService{
 
     public static function prepareOptions(){
         $options=[];
-        $category = Type::pluck('name','id');
-
-        $status_raw = explode(",",setting('remark_status'));
-
-        $status = [];
-        foreach($status_raw as $value){
-            $status += [$value => $value];
-        }
 
         $options = array(
-            'category'         => $category,
-            'status'           => $status,
+            'category'         => [],
         );
 
         return $options;

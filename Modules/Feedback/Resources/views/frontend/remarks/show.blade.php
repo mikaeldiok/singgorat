@@ -20,7 +20,7 @@
                             
                             <div class="post-meta">
                                 <span class="font-weight-bold mr-3">
-                                   {{$$module_name_singular->remarker}} martha ayu wulandari                            
+                                   {{$$module_name_singular->remarker}}                         
                                 </span>
                                 <span class="post-date mr-3">  
                                     {{$$module_name_singular->kelas  }}

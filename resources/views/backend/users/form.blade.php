@@ -27,26 +27,6 @@
     </div>
 </div>
 <div class="row">
-    <div class="col">
-        <div class="form-group">
-            <?php
-            $field_name = 'reporter_type';
-            $field_lable = "Jenis User Siswa";
-            $field_placeholder = $field_lable;
-            $required = "required";
-            $select_options = [
-                'Orang Tua' => 'Orang Tua',
-                'Murid' => 'Murid',
-                'Other' => 'Other',
-            ];
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="col-6">
         <div class="form-group">
             <?php

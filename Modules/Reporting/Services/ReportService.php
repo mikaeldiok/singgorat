@@ -56,12 +56,12 @@ class ReportService{
     
     public function getAllReports(){
 
-        $report =Report::query()->available()->orderBy('id','desc')->get();
+        $reports =Report::available()->orderBy('id','desc')->get();
         
         return (object) array(
             'error'=> false,            
             'message'=> '',
-            'data'=> $report,
+            'data'=> $reports,
         );
     }
 

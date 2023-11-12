@@ -31,6 +31,7 @@
 
         <div class="row mt-4">
             <div class="col">
+                <a class="mb-3 font-weight-bold" href='{!!route("backend.reports.show", $$module_name_singular->report_id)!!}'>Lihat seratan <i class="fas fa-arrow-right"></i></a>
                 {{ html()->modelForm($$module_name_singular, 'PATCH', route("backend.$module_name.update", $$module_name_singular))->class('form')->attributes(['enctype'=>"multipart/form-data"])->open() }}
 
                 @include ("feedback::backend.$module_name.form")

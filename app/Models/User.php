@@ -99,4 +99,9 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function isSuperAdmin(){
         return $this->hasRole('super admin');
     }
+    
+    public function remarks()
+    {
+        return $this->hasMany('Modules\Feedback\Entities\Remark');
+    }
 }

@@ -59,6 +59,8 @@ class ReportsController extends Controller
 
         $reports = $this->reportService->getAllReports()->data;
 
+        \Log::debug($reports);
+        \Log::debug(count($reports));
         //determine connections
         $connection = config('database.default');
         $driver = config("database.connections.{$connection}.driver");

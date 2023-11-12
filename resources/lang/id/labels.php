@@ -28,6 +28,8 @@ return [
         'Other'                 => 'Lain-lain',
         'edit_profile'          => 'Edit Profil',
         'category_name'         => 'Kategori',
+        'email_credentials'     => 'Email Credentials',
+
     ],
     // __("labels.text.edit_profile")
 

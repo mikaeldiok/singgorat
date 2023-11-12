@@ -275,7 +275,6 @@ class UserController extends Controller
                 'password' => $request->password,
             ];
             
-            $$module_name_singular->notify(new UserAccountCreated($data));
 
             Flash::success(icon('fas fa-envelope')." Account Credentials Sent to User.")->important();
         }        

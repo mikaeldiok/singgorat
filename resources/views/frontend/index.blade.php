@@ -14,7 +14,7 @@
               <h5 class="mb-5 text-light">Sistim Pendukung Pembelajaran Siswa Kompetensi Public Relation dan Public Speaking</h5>
               <p class="mb-0">
                 <a href="#get-started" id="start" class="btn btn-lg btn-theme px-3 py-2 mx-2">Mulai <i class="fas fa-arrow-down"></i></a>
-                <a href="#get-started" id="start" class="btn btn-lg btn-theme px-3 py-2 mx-2">Artikel<i class="fas fa-arrow-right"></i></a>
+                <a href="{{route('frontend.reports.index')}}" id="start" class="btn btn-lg btn-theme px-3 py-2 mx-2">Artikel<i class="fas fa-arrow-right"></i></a>
               </p>
                 <!-- <p style="display: inline-block;" class="text-warning"><a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="ftco-play-video d-flex text-warning"><span class="play-icon-wrap align-self-center mr-4"><span class="ion-ios-play"></span></span> <span class="align-self-center">Watch Video</span></a></p> -->
             </div>

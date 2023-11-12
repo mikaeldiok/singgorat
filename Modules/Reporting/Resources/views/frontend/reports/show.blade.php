@@ -20,7 +20,7 @@
                             
                             <div class="post-meta">
                                 <span class="font-weight-bold mr-3">
-                                   {{$$module_name_singular->reporter}} martha ayu wulandari                            
+                                   {{$$module_name_singular->reporter}}                           
                                 </span>
                                 <span class="post-date mr-3">  
                                     {{$$module_name_singular->kelas  }}
@@ -35,11 +35,36 @@
                             <div class="card">
                                 <div class="card-body">
                                     <p>
-                                        Halaman ini berisikan kumpulan seratan siswa
+                                       {!!$$module_name_singular->content!!}
                                     </p>                                
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <hr>
+                    <div class="text-left">
+                        <h2 class="my-3">Tanggapan</h2>   
+                        @if(count($$module_name_singular->remarks) > 1)    
+                            @foreach($$module_name_singular->remarks as $remark)
+                                <div class="row m-2">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5>{{$remark->user->first_name}} {{$remark->user->last_name}}</h5>
+                                                <p>
+                                                {{$remark->comment}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <p>
+                                No Comments
+                            </p>
+                        @endif
+                        
                     </div>
                 </div>
             </div>

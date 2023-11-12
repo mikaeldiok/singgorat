@@ -11,12 +11,6 @@
 <section class="py-3 bg-dark-red-shade">
     <div class="container">
     <div class="row">
-            @php
-            $$module_name_singular = $$module_name->shift();
-
-            $details_url = route("frontend.$module_name.show",[encode_id($$module_name_singular->id), $$module_name_singular->slug]);
-            @endphp
-
             <div class="col-lg-12 mb-5  text-center">
                 <div class="card bg-white border-light shadow-soft flex-md-row no-gutters p-4 justify-content-center">
                     <div class="text-center">
@@ -29,25 +23,26 @@
 
                         <a href="'/'"><h6 class="text-muted small ml-2 mb-0"></h6></a>
 
-                        <h6 class="text-muted small font-weight-normal mb-0 ml-auto"><time datetime="{{$$module_name_singular->published_at}}">{{$$module_name_singular->published_at_formatted}}</time></h6>
                     </div>
                 </div>
             </div>
-            @foreach ($$module_name as $$module_name_singular)
-            @php
-            $details_url = route("frontend.$module_name.show",$$module_name_singular->id);
-            @endphp
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card bg-white border-light shadow-soft p-4 rounded">
-                    <div class="card-body p-0 pt-4">
-                        <a href="{{$details_url}}" class="h3">{{$$module_name_singular->title}}</a>
-                        <p>
-                            {{$$module_name_singular->reporter}} - {{$$module_name_singular->kelas}}
-                        </p>
-                        <p class="mb-3">{{$$module_name_singular->intro}}</p>
+            @foreach ($reports as $report)
+                @php
+                $details_url = route("frontend.$module_name.show",$$module_name_singular->id);
+                @endphp
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card bg-white border-light shadow-soft p-4 rounded">
+                        <div class="card-body p-0">
+                            <a href="{{$details_url}}" class="h3">{{$$module_name_singular->title}}</a>
+                            <h6 class="text-muted small font-weight-normal mb-0 ml-auto"><time datetime="{{$$module_name_singular->created_at}}">{{$$module_name_singular->created_at}}</time></h6>
+                            <br>
+                            <p>
+                                {{$$module_name_singular->reporter}} - {{$$module_name_singular->kelas}}
+                            </p>
+                            <p class="mb-3">{{$$module_name_singular->intro}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
 

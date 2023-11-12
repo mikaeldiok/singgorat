@@ -13,7 +13,6 @@ use Illuminate\Support\Str;
 use Log;
 use Modules\Feedback\Services\RemarkService;
 use Modules\Feedback\DataTables\RemarksDataTable;
-use Modules\Feedback\DataTables\Users\RemarksDataTableUsers;
 use Modules\Feedback\Http\Requests\Backend\RemarksRequest;
 use Spatie\Activitylog\Models\Activity;
 use Yajra\DataTables\DataTables;
@@ -49,7 +48,7 @@ class RemarksController extends Controller
      *
      * @return Response
      */
-    public function index(RemarksDataTable $dataTable,RemarksDataTableUsers $dataTableUsers)
+    public function index(RemarksDataTable $dataTable)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
@@ -60,15 +59,9 @@ class RemarksController extends Controller
 
         $module_action = 'List';
 
-        if(auth()->user()->hasRole('user')){
-            return $dataTableUsers->render("feedback::backend.$module_path.users.index",
-                compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action')
-            );
-        }else{
-            return $dataTable->render("feedback::backend.$module_path.index",
-                compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action')
-            );
-        }
+        return $dataTable->render("feedback::backend.$module_path.index",
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action')
+        );
     }
 
     /**
@@ -136,6 +129,7 @@ class RemarksController extends Controller
 
         $module_action = 'Store';
 
+        $report_id = $request->input('report_id');
         $remarks = $this->remarkService->store($request);
 
         $$module_name_singular = $remarks->data;
@@ -146,7 +140,7 @@ class RemarksController extends Controller
             Flash::error("<i class='fas fa-times-circle'></i> Error When ".$module_action." '".Str::singular($module_title)."'")->important();
         }
 
-        return redirect("admin/$module_name");
+        return redirect("admin/reports/".$report_id);
     }
 
     /**

@@ -34,55 +34,7 @@ class RemarksDataTable extends DataTable
             ->addColumn('action', function ($data) {
                 $module_name = $this->module_name;
 
-                return view('backend.includes.action_column_remark', compact('module_name', 'data'));
-            })
-            ->editColumn('available', function ($data) {
-                $module_name = $this->module_name;
-
-                if($data->available)
-                {
-                    $availability = '<p class="text-white text-center bg-success rounded">YES</p>';
-                }else{
-                    $availability = '<p class="text-white text-center bg-danger rounded">NO</p>';
-                }
-
-                return $availability;
-            })
-            ->editColumn('category', function ($data) {
-                $module_name = $this->module_name;
-                if(isset($data->type)){
-
-                    $cateogry_name = $data->type->name;
-                }else{
-                    $cateogry_name = "uncategorized";
-                }
-                return $cateogry_name;
-            })
-            ->editColumn('status', function ($data) {
-
-                $text_modification = "";
-                $the_status = $data->status;
-
-                switch($the_status){
-                    case 'Belum Dibaca':
-                        $text_modification = "text-danger";       
-                        break;
-                    case 'Diproses':    
-                        $text_modification = "text-warning";
-                        break;
-                    case 'Selesai':    
-                        $text_modification = "text-success";
-                        break;
-                }
-
-                return "<span class=".$text_modification.">".$the_status."</span>";
-            })
-            ->editColumn('photo', function ($data) {
-                $module_name = $this->module_name;
-
-                $pictureView = '<img src="'.asset($data->photo).'" class="user-profile-image img-fluid img-thumbnail" style="max-height:150px; max-width:100px;" />';
-
-                return $pictureView;
+                return view('backend.includes.action_column_admin', compact('module_name', 'data'));
             })
             ->editColumn('updated_at', function ($data) {
                 $module_name = $this->module_name;
@@ -102,7 +54,7 @@ class RemarksDataTable extends DataTable
 
                 return $formated_date;
             })
-            ->rawColumns(['name', 'status','action','photo','available']);
+            ->rawColumns(['action']);
     }
 
     /**
@@ -114,7 +66,12 @@ class RemarksDataTable extends DataTable
     public function query()
     {
         $user = auth()->user();
-        $data = Remark::query();
+
+        if($user->isSuperAdmin()){
+            $data = Remark::query();
+        }else{
+            $data = Remark::where('user_id',$user->id);
+        }
 
         return $this->applyScopes($data);
     }
@@ -161,15 +118,8 @@ class RemarksDataTable extends DataTable
                   ->printable(false)
                   ->addClass('text-center'),
             Column::make('id')->hidden(),
-            Column::make('remarker')->title(__("feedback::remarks.remarker")),
-            Column::make('kelas')->title(__("feedback::remarks.kelas")),
-            Column::make('remarker_type')->title(__("feedback::remarks.remarker_type")),
-            Column::make('category')->title(__("feedback::remarks.category")),
-            Column::make('remarker_email')->title(__("feedback::remarks.remarker_email"))->hidden(),
-            Column::make('nomor_hp')->title(__("feedback::remarks.nomor_hp"))->hidden(),
-            Column::make('alamat')->title(__("feedback::remarks.alamat"))->hidden(),
-            Column::make('title')->title(__("feedback::remarks.title")),
-            Column::make('status')->title(__("feedback::remarks.status")),
+            Column::make('user_id')->title(__("feedback::remarks.user_id")),
+            Column::make('comment')->title(__("feedback::remarks.comment")),
             Column::make('created_at'),
             Column::make('updated_at')->hidden(),
         ];

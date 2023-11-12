@@ -48,5 +48,6 @@ class UserCreatedProfileCreate
         Log::info('UserCreatedProfileCreate: '.$userprofile->name.'(Id:'.$userprofile->user_id.')');
 
         // Clear Cache
+        \Artisan::call('cache:clear');
     }
 }

@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+<!--                             
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -89,16 +89,15 @@
                                     $field_placeholder = '--pilih jenis siswa--';
                                     $required = "required";
                                     $select_options = [
-                                        'Orang Tua' => 'Orang Tua',
+                                        'Guru' => 'Guru',
                                         'Murid' => 'Murid',
-                                        'Other' => 'Other',
                                     ];
                                     $required = "required";
                                     ?>
 
                                     {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
                                 </div>
-                            </div>
+                            </div> -->
                             <hr>
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative mb-3">

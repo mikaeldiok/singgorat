@@ -17,9 +17,13 @@ class Remark extends BaseModel
     protected static $logName = 'remarks';
     protected static $logOnlyDirty = true;
     
-    public function reports()
+    public function report()
     {
         return $this->belongsTo('Modules\Reporting\Entities\Report');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
