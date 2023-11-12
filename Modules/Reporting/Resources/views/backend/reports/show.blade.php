@@ -82,7 +82,7 @@
                 </div>    
                 <hr>
                 <h3>Tanggapan Anda</h3>   
-                @if(count($$module_name_singular->remarks) > 1)    
+                @if($$module_name_singular->remarks)  
                     @foreach($$module_name_singular->remarks as $remark)
                         <div class="row">
                             <div class="col-lg-12">
