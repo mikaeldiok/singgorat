@@ -153,11 +153,12 @@ class Report extends UserModel implements HasMedia
     {
         if(auth()->user() == null){
             return $this->hasMany('Modules\Feedback\Entities\Remark');
-        }
-        if(auth()->user()->isSuperAdmin()){
-            return $this->hasMany('Modules\Feedback\Entities\Remark');
         }else{
-            return $this->hasMany('Modules\Feedback\Entities\Remark')->where('user_id',auth()->user()->id);
+            if(auth()->user()->isSuperAdmin()){
+                return $this->hasMany('Modules\Feedback\Entities\Remark');
+            }else{
+                return $this->hasMany('Modules\Feedback\Entities\Remark')->where('user_id',auth()->user()->id);
+            }
         }
     }
 
