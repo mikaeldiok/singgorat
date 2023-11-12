@@ -46,7 +46,7 @@
                         <h2 class="my-3">Tanggapan</h2>   
                             {{\Log::debug($$module_name_singular)}}  
                             {{\Log::debug($$module_name_singular->remarks)}}  
-                        @if(count($$module_name_singular->remarks) > 1)  
+                        @if($$module_name_singular->remarks)  
                             {{\Log::debug('yes comment')}}  
                             @foreach($$module_name_singular->remarks as $remark)
                                 {{\Log::debug('$remark')}}  
