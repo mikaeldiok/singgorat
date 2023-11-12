@@ -142,7 +142,7 @@ class Report extends UserModel implements HasMedia
     }
 
     public function scopeAvailable($query){
-        return $query->where('available','1');
+        return $query->where('status','Published');
     }
 
     public function isAvailable(){

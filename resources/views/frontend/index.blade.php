@@ -11,8 +11,11 @@
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-9">
               <h1 class="heading mb-4" style="font-family:Rockwell;font-weight: bold;">Si NggoRat</h1>
-              <h5 class="mb-5 text-light">Sistem informasi untuk menyampaikan aspirasi dan masukan dari segenap civitas SMKN1 Kokap</h5>
-              <p class="mb-0"><a href="#get-started" id="start" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-down"></i></a></p>
+              <h5 class="mb-5 text-light">Sistim Pendukung Pembelajaran Siswa Kompetensi Public Relation dan Public Speaking</h5>
+              <p class="mb-0">
+                <a href="#get-started" id="start" class="btn btn-lg btn-theme px-3 py-2 mx-2">Mulai <i class="fas fa-arrow-down"></i></a>
+                <a href="#get-started" id="start" class="btn btn-lg btn-theme px-3 py-2 mx-2">Artikel<i class="fas fa-arrow-right"></i></a>
+              </p>
                 <!-- <p style="display: inline-block;" class="text-warning"><a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="ftco-play-video d-flex text-warning"><span class="play-icon-wrap align-self-center mr-4"><span class="ion-ios-play"></span></span> <span class="align-self-center">Watch Video</span></a></p> -->
             </div>
           </div>
@@ -34,8 +37,8 @@
         </div>
       @endif
         <div class="col-md-6 p-4 {{!user_registration() ? 'border rounded-lg border-primary' : ''}} welcome-text">
-          <h2 class="display-4 mb-3">Laporan instan</h2>
-          <p class="lead">Anda dapat menyampaikan laporan secara instan dengan melalui link dibawah ini</p>
+          <h2 class="display-4 mb-3">Buat Seratan</h2>
+          <p class="lead">Mulai membuat seratan dan dapatkan feedback dari para pendamping</p>
           <p class="mb-4"></p>
           <p class="mb-0"><a href="{{route('frontend.reports.create')}}" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-right"></i></a></p>
         </div>

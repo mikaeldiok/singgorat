@@ -85,8 +85,8 @@
                                     </div>
                                     <?php
                                     $field_name = 'reporter_type';
-                                    $field_lable = "Jenis User Pelapor";
-                                    $field_placeholder = '--pilih jenis pelapor--';
+                                    $field_lable = "Jenis User Siswa";
+                                    $field_placeholder = '--pilih jenis siswa--';
                                     $required = "required";
                                     $select_options = [
                                         'Orang Tua' => 'Orang Tua',

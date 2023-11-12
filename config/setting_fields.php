@@ -41,7 +41,7 @@ return [
                 'label' => 'Report Status', // you know what label it is
                 'rules' => 'required|min:2', // validation rule of laravel
                 'class' => '', // any class for input
-                'value' => 'Belum Dibaca,Diproses,Selesai,Dibatalkan', // default value if you want
+                'value' => 'Draft,Published,Commented', // default value if you want
             ],
         ],
     ],

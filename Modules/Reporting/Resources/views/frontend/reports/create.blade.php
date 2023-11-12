@@ -8,11 +8,10 @@
   <div class="bg-primary header-bg"></div>
 </div>
 
-<section class="py-3 bg-orange-shade">
+<section class="py-3 bg-dark-red-shade">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 pt-8">
-                
+        <div class="row justify-content-left">
+            <div class="col-12 col-md-10 pt-8">
                 <div class="card">
                     <div class="card-body">
 
@@ -21,8 +20,8 @@
                         <!-- Errors block -->
                         @include('backend.includes.errors')
 
-                        <h2>Form Pengaduan</h2>
-                        <small>Silakan isi data dibawah ini dengan sebenar-benarnya</small>
+                        <h2>Seratanku Hari ini</h2>
+                        <small>Tuangkan kreatifitas mu disini!</small>
                         <hr>
 
                         <div class="row mt-4">
@@ -34,13 +33,14 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            {{ html()->button($text = "<i class='fas fa-plus-circle'></i> " . ucfirst($module_action) . "", $type = 'submit')->class('btn btn-success') }}
+                                            <button type="button" class="btn btn-warning" onclick="history.back(-1)"><i class="fas fa-arrow-left"></i> Cancel</button>
+
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="float-right">
                                             <div class="form-group">
-                                                <button type="button" class="btn btn-warning" onclick="history.back(-1)"><i class="fas fa-reply"></i> Cancel</button>
+                                                {{ html()->button($text = "<i class='fas fa-plus-circle'></i> " . ucfirst("Buat Seratan") . "", $type = 'submit')->class('btn btn-success') }}
                                             </div>
                                         </div>
                                     </div>

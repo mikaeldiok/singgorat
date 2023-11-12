@@ -28,7 +28,8 @@
           </div>
         @endif
         <li class="nav-item {{Route::currentRouteName() == 'frontend.index' ? 'active' : ''}}"><a href="/" class="nav-link">Beranda</a></li>
-        <li class="nav-item {{Route::currentRouteName() == 'frontend.reports.create' ? 'active' : ''}}"><a href="{{route('frontend.reports.create')}}" class="nav-link">Aduan</a></li>
+        <li class="nav-item {{Route::currentRouteName() == 'frontend.reports.create' ? 'active' : ''}}"><a href="{{route('frontend.reports.create')}}" class="nav-link">Seratanku</a></li>
+        <li class="nav-item {{Route::currentRouteName() == 'frontend.reports.index' ? 'active' : ''}}"><a href="{{route('frontend.reports.index')}}" class="nav-link">Artikel</a></li>
         @auth
           @if(Auth::user()->hasRole("user") ||  !Auth::user()->can('view_backend'))
             <!-- user only -->

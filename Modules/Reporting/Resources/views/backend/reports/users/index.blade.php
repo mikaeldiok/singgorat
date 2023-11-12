@@ -25,9 +25,9 @@
                             <a href='{{route("backend.$module_name.create") }}'
                                 class='btn btn-success'
                                 data-toggle="tooltip"
-                                title="Buat Laporan">
+                                title="Buat Seratan">
                                 <i class="fas fa-plus"></i>
-                                Tambah Laporan Baru
+                                Tambah Seratan Baru
                             </a>
                     @endcan
                 </div>

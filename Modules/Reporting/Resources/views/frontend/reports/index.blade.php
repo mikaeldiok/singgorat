@@ -1,40 +1,58 @@
-@extends('reporting::frontend.layouts.app')
+@extends('frontend.layouts.app')
 
 @section('title') {{ __("Donatur") }} @endsection
 
 @section('content')
 
-<div class="px-4 z-2">
-    <div class="row">
-
-    <div class="col-lg-3 mb-5">
-            <div class="card bg-white border-light shadow flex-md-row no-gutters p-4">
-                <div class="card-body d-flex flex-column justify-content-between col-auto py-3">
-                    <form name="filterForm" id="filterForm" method="post" action="javascript:void(0)">
-                        @csrf
-
-                        {{ method_field('POST') }}
-                        @include('reporting::frontend.reports.filter-form')
-                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                        <button class="btn btn-danger-o" id="clearFilter"><i class="fa fa-times"></i>Clear Filter</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-9 mb-5">
-            <div class="card bg-white border-light shadow flex-md-row no-gutters p-4">
-                <div class="card-body d-flex flex-column justify-content-between col-auto py-4 px-2">
-                    @if (count($reports) > 0)
-                        <section id="reports">
-                            @include('reporting::frontend.reports.reports-card-loader')
-                        </section>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="block-31" style="position: relative;">
+  <div class="bg-primary header-bg"></div>
 </div>
 
+<section class="py-3 bg-dark-red-shade">
+    <div class="container">
+    <div class="row">
+            @php
+            $$module_name_singular = $$module_name->shift();
+
+            $details_url = route("frontend.$module_name.show",[encode_id($$module_name_singular->id), $$module_name_singular->slug]);
+            @endphp
+
+            <div class="col-lg-12 mb-5  text-center">
+                <div class="card bg-white border-light shadow-soft flex-md-row no-gutters p-4 justify-content-center">
+                    <div class="text-center">
+                        <h1>Seratan Siswa</h1>
+                        <p>
+                            Halaman ini berisikan kumpulan seratan siswa
+                        </p>
+                    </div>
+                    <div class="d-flex align-items-center">
+
+                        <a href="'/'"><h6 class="text-muted small ml-2 mb-0"></h6></a>
+
+                        <h6 class="text-muted small font-weight-normal mb-0 ml-auto"><time datetime="{{$$module_name_singular->published_at}}">{{$$module_name_singular->published_at_formatted}}</time></h6>
+                    </div>
+                </div>
+            </div>
+            @foreach ($$module_name as $$module_name_singular)
+            @php
+            $details_url = route("frontend.$module_name.show",$$module_name_singular->id);
+            @endphp
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card bg-white border-light shadow-soft p-4 rounded">
+                    <div class="card-body p-0 pt-4">
+                        <a href="{{$details_url}}" class="h3">{{$$module_name_singular->title}}</a>
+                        <p>
+                            {{$$module_name_singular->reporter}} - {{$$module_name_singular->kelas}}
+                        </p>
+                        <p class="mb-3">{{$$module_name_singular->intro}}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+    </div>       
+</section>
 @endsection
 
 @push ('after-styles')

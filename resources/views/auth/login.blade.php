@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="main-content bg-orange-shade">
+<div class="main-content bg-dark-red-shade">
 
     <div class="header py-7 py-lg-8 pt-lg-9">
         <div class="container">

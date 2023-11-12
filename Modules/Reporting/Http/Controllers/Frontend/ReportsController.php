@@ -69,6 +69,28 @@ class ReportsController extends Controller
         );
     }
 
+    public function artikel()
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $module_action = 'Index';
+
+        $reports = $this->reportService->getAllReports()->data;
+
+        //determine connections
+        $connection = config('database.default');
+        $driver = config("database.connections.{$connection}.driver");
+       
+        return view(
+            "reporting::frontend.$module_name.index",
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "reports",'driver')
+        );
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -117,7 +139,7 @@ class ReportsController extends Controller
         $$module_name_singular = $reports->data;
 
         if(!$reports->error){
-            Flash::success('<i class="fas fa-check"></i> Terima kasih! Laporan anda sudah kami simpan.')->important();
+            Flash::success('<i class="fas fa-check"></i> Bagus! Seratan anda sudah Terkirim.')->important();
         }else{
             Flash::error("<i class='fas fa-times-circle'></i> Terjadi kesalahan. silakan coba beberapa saat lagi'")->important();
         }
@@ -197,7 +219,7 @@ class ReportsController extends Controller
      *
      * @return Response
      */
-    public function show($id,$reportId)
+    public function show($id)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;

@@ -14,7 +14,7 @@
     @else
       <button class="btn btn-block btn-success choose-report" data-id="{{$report->id}}" id="choose-report-{{$report->id}}">PILIH</button>
     @endif
-    <a href="{{route('frontend.reports.show',[$report->id,$report->report_id])}}">
+    <a href="{{route('frontend.reports.show',[$report->id])}}">
       <h4 class="card-title pt-3" style="font-size: 22px">{{\Illuminate\Support\Str::limit($report->name, 17, $end = '...')}}</h4>
     </a>
       <h4 class="card-title" style="font-size: 19px">{{$report->major}} - {{$report->year_class}}</h4>

@@ -4,7 +4,7 @@ return [
 
     'report_number'                => 'Report Number', 
     'reporter'                     => 'Reporter',
-    'reporter_type'                => 'Jenis Pelapor',
+    'reporter_type'                => 'Jenis Siswa',
     'reporter_nis'                 => 'NIS',
     'reporter_email'               => 'Reporter Email',
     'kelas'                        => 'Kelas',

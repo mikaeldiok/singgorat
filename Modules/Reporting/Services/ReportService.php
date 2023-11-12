@@ -124,7 +124,7 @@ class ReportService{
 
     public function getPaginatedReports($pagination,$request){
 
-        $report =Report::query()->available();
+        $report =Report::query();
 
         if(count($request->all()) > 0){
 
@@ -236,7 +236,7 @@ class ReportService{
         );
     }
 
-    public function show($id, $reportId = null){
+    public function show($id){
 
         Log::info(label_case($this->module_title.' '.__function__).' | User:'.(Auth::user()->name ?? 'unknown').'(ID:'.(Auth::user()->id ?? "0").')');
 
@@ -459,13 +459,13 @@ class ReportService{
         $options = self::prepareOptions();
 
         $year_class_raw = DB::table('reports')
-                        ->select('year_class', DB::raw('count(*) as total'))
-                        ->groupBy('year_class')
-                        ->orderBy('year_class','desc')
+                        ->select('kelas', DB::raw('count(*) as total'))
+                        ->groupBy('kelas')
+                        ->orderBy('kelas','desc')
                         ->get();
         $year_class = [];
             foreach($year_class_raw as $item){
-                $year_class += [$item->year_class => $item->year_class];
+                $year_class += [$item->kelas => $item->kelas];
                 // $year_class += [$item->year_class => $item->year_class." (".$item->total.")"];
             }
 

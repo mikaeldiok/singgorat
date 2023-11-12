@@ -25,8 +25,8 @@ return [
     ],
 
     'reporting' => [
-        'title'             => 'Laporan',
-        'reports'           => 'Laporan',
+        'title'             => 'Seratan',
+        'reports'           => 'Seratan',
         'types'             => 'Kategori',
     ],
 

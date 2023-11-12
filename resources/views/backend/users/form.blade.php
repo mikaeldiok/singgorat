@@ -31,7 +31,7 @@
         <div class="form-group">
             <?php
             $field_name = 'reporter_type';
-            $field_lable = "Jenis User Pelapor";
+            $field_lable = "Jenis User Siswa";
             $field_placeholder = $field_lable;
             $required = "required";
             $select_options = [
