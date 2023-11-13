@@ -70,7 +70,7 @@
         <div class="form-group">
             <?php
             $field_name = 'content';
-            $field_lable = __("reporting::$module_name.$field_name");
+            $field_lable = __("reporting::$module_name.$field_name")." (Preview Only)";
             $field_placeholder = $field_lable;
             $required = "required";
             ?>
@@ -90,6 +90,23 @@
 
 @push ('after-scripts')
 
+<script type="text/javascript" src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
+
+<script type="text/javascript">
+
+CKEDITOR.replace('content', {filebrowserImageBrowseUrl: '/file-manager/ckeditor', language:'{{App::getLocale()}}', defaultLanguage: 'en'});
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  document.getElementById('button-image').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    window.open('/file-manager/fm-button', 'fm', 'width=800,height=600');
+  });
+});
+
+</script>
 <!-- Date Time Picker & Moment Js-->
 <script type="text/javascript">
 $(function() {
