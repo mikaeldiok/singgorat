@@ -25,7 +25,7 @@ class PostsRequest extends FormRequest
     {
         return [
             'name'           => 'required|max:191',
-            'featured_image' => 'required',
+            // 'featured_image' => 'required',
             'type'           => 'required',
             'is_featured'    => 'required',
             'status'         => 'required',

@@ -4,29 +4,24 @@
 
 @section('content')
 
-<div class="block-31" style="position: relative;">
-  <div class="bg-primary header-bg"></div>
-</div>
-
-<section class="py-3 bg-dark-red-shade">
+<section class="section-header bg-primary text-white pb-7 pb-lg-11">
     <div class="container">
-    <div class="row">
-            <div class="col-lg-12 mb-5  text-center">
-                <div class="card bg-white border-light shadow-soft flex-md-row no-gutters p-4 justify-content-center">
-                    <div class="text-center">
-                        <h1>Artikel dan Materi</h1>
-                        <p>
-                            Halaman ini berisikan Materi dan referensi Belajar
-                        </p>
-                    </div>
-                    <div class="d-flex align-items-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 text-center">
+                <h1 class="display-2 mb-4">
+                    The Super Articles
+                </h1>
+                <p class="lead">
+                    We publish articles on a number of topics. We encourage you to read our posts and let us know your feedback. It would be really help us to move forward.
+                </p>
 
-                        <a href="'/'"><h6 class="text-muted small ml-2 mb-0"></h6></a>
-
-                    </div>
-                </div>
+                @include('frontend.includes.messages')
             </div>
-            
+        </div>
+    </div>
+    <div class="pattern bottom"></div>
+</section>
+
 @if(count($$module_name))
 <section class="section section-lg line-bottom-light">
     <div class="container mt-n7 mt-lg-n12 z-2">
@@ -39,10 +34,10 @@
 
             <div class="col-lg-12 mb-5">
                 <div class="card bg-white border-light shadow-soft flex-md-row no-gutters p-4">
-                    <!-- <a href="{{$details_url}}" class="col-md-6 col-lg-6">
+                    <a href="{{$details_url}}" class="col-md-6 col-lg-6">
                         <img src="{{$$module_name_singular->featured_image}}" alt="" class="card-img-top">
-                    </a> -->
-                    <div class="card-body d-flex flex-column justify-content-between col-auto py-4 p-lg-2">
+                    </a>
+                    <div class="card-body d-flex flex-column justify-content-between col-auto py-4 p-lg-5">
                         <a href="{{$details_url}}">
                             <h2>{{$$module_name_singular->name}}</h2>
                         </a>
@@ -93,9 +88,4 @@
 </section>
 @endif
 
-        </div>
-
-    </div>       
-</section>
 @endsection
-

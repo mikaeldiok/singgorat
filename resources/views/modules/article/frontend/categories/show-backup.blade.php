@@ -4,20 +4,16 @@
 
 @section('content')
 
-<div class="block-31" style="position: relative;">
-  <div class="bg-primary header-bg"></div>
-</div>
-
-<section class="section-header text-white pb-7 pb-lg-11">
+<section class="section-header bg-primary text-white pb-7 pb-lg-11">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8 text-center m-3">
-                <div class="my-2">
+            <div class="col-12 col-md-8 text-center">
+                <div class="mb-2">
                     <a href="{{route('frontend.categories.index')}}" class="badge badge-sm badge-warning text-uppercase px-3">
                         Category
                     </a>
                 </div>
-                <h1 class="display-4 mb-4">
+                <h1 class="display-2 mb-4">
                     {{$$module_name_singular->name}}
                 </h1>
                 <p class="lead">
@@ -40,8 +36,8 @@
             $details_url = route("frontend.posts.show",[encode_id($post->id), $post->slug]);
             @endphp
 
-            <div class="col-12 col-md-4 mb-4 border">
-                <div class="card bg-white border-light shadow-soft px-4 rounded">
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card bg-white border-light shadow-soft p-4 rounded">
                     <a href="{{$details_url}}"><img src="{{$post->featured_image}}" class="card-img-top" alt=""></a>
                     <div class="card-body p-0 pt-4">
                         <a href="{{$details_url}}" class="h3">{{$post->name}}</a>

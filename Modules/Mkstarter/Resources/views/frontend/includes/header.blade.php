@@ -58,7 +58,7 @@
             </div>
           </li>
         @else
-          <li class="nav-item"><a href="{{route('login')}}" class="btn btn-sm btn-orange nav-button">log in</a></li>
+          <li class="nav-item"><a href="{{route('login')}}" class="btn btn-sm btn-blue text-white nav-button">log in</a></li>
         @endauth
       </ul>
     </div>

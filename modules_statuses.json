@@ -1,7 +1,7 @@
 {
-    "Article": false,
-    "Tag": false,
-    "Comment": false,
+    "Article": true,
+    "Tag": true,
+    "Comment": true,
     "Core": false,
     "School": false,
     "Mkstarter": false,

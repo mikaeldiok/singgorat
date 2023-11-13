@@ -17,7 +17,7 @@
             <?php
             $field_name = 'slug';
             $field_lable = __("article::$module_name.$field_name");
-            $field_placeholder = $field_lable;
+            $field_placeholder = "kode artikel (misal: art01)";
             $required = "";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
@@ -30,7 +30,7 @@
             <?php
             $field_name = 'created_by_alias';
             $field_lable = __("article::$module_name.$field_name");
-            $field_placeholder = "Hide Author User's Name and use Alias";
+            $field_placeholder = "Nama Penulis";
             $required = "";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
@@ -44,7 +44,7 @@
             <?php
             $field_name = 'intro';
             $field_lable = __("article::$module_name.$field_name");
-            $field_placeholder = $field_lable;
+            $field_placeholder = "Heading Artikel";
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
@@ -73,7 +73,7 @@
             $field_name = 'featured_image';
             $field_lable = __("article::$module_name.$field_name");
             $field_placeholder = $field_lable;
-            $required = "required";
+            $required = "";
             ?>
             {!! Form::label("$field_name", "$field_lable") !!} {!! fielf_required($required) !!}
             <div class="input-group mb-3">
@@ -94,9 +94,11 @@
             $field_relation = "category";
             $field_placeholder = __("Select an option");
             $required = "required";
+            $select_options = Modules\Article\Entities\Category::all()->pluck("name","id");
+            \Log::debug($select_options);
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, isset($$module_name_singular)?optional($$module_name_singular->$field_relation)->pluck('name', 'id'):'')->placeholder($field_placeholder)->class('form-control select2-category')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-4">
@@ -113,7 +115,7 @@
             ];
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $select_options,"Article")->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-4">
@@ -129,7 +131,7 @@
             ];
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $select_options,0)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
         </div>
     </div>
 </div>
@@ -187,7 +189,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-5">
         <div class="form-group">
             <?php
@@ -264,7 +266,7 @@
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
-</div>
+</div> -->
 <div></div>
 
 
@@ -284,22 +286,6 @@ $(document).ready(function() {
         theme: "bootstrap",
         placeholder: '@lang("Select an option")',
         minimumInputLength: 2,
-        allowClear: true,
-        ajax: {
-            url: '{{route("backend.categories.index_list")}}',
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    q: $.trim(params.term)
-                };
-            },
-            processResults: function (data) {
-                return {
-                    results: data
-                };
-            },
-            cache: true
-        }
     });
 
     $('.select2-tags').select2({
