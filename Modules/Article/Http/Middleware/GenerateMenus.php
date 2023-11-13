@@ -70,31 +70,31 @@ class GenerateMenus
                 'class' => "c-sidebar-nav-link",
             ]);
 
-            $articles_menu->add('<i class="fas fa-comments c-sidebar-nav-icon"></i> '.trans('menu.blog.comments'), [
-                'route' => 'backend.comments.index',
-                'class' => 'c-sidebar-nav-item',
-            ])
-            ->data([
-                'order' => 85,
-                'activematches' => ['admin/comments*'],
-                'permission' => ['view_comments'],
-            ])
-            ->link->attr([
-                'class' => 'c-sidebar-nav-link',
-            ]);
+            // $articles_menu->add('<i class="fas fa-comments c-sidebar-nav-icon"></i> '.trans('menu.blog.comments'), [
+            //     'route' => 'backend.comments.index',
+            //     'class' => 'c-sidebar-nav-item',
+            // ])
+            // ->data([
+            //     'order' => 85,
+            //     'activematches' => ['admin/comments*'],
+            //     'permission' => ['view_comments'],
+            // ])
+            // ->link->attr([
+            //     'class' => 'c-sidebar-nav-link',
+            // ]);
 
-            $articles_menu->add('<i class="fas fa-tags c-sidebar-nav-icon"></i> '.trans('menu.blog.tags'), [
-                'route' => 'backend.tags.index',
-                'class' => "c-sidebar-nav-item",
-            ])
-            ->data([
-                'order' => 84,
-                'activematches' => ['admin/tags*'],
-                'permission' => ['view_tags'],
-            ])
-            ->link->attr([
-                'class' => 'c-sidebar-nav-link',
-            ]);
+            // $articles_menu->add('<i class="fas fa-tags c-sidebar-nav-icon"></i> '.trans('menu.blog.tags'), [
+            //     'route' => 'backend.tags.index',
+            //     'class' => "c-sidebar-nav-item",
+            // ])
+            // ->data([
+            //     'order' => 84,
+            //     'activematches' => ['admin/tags*'],
+            //     'permission' => ['view_tags'],
+            // ])
+            // ->link->attr([
+            //     'class' => 'c-sidebar-nav-link',
+            // ]);
         })->sortBy('order');
 
         return $next($request);
