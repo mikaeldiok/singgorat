@@ -68,9 +68,9 @@ class RemarksDataTable extends DataTable
         $user = auth()->user();
 
         if($user->isSuperAdmin()){
-            $data = Remark::query();
+            $data = Remark::with(['user']);
         }else{
-            $data = Remark::where('user_id',$user->id);
+            $data = Remark::with(['user'])->where('user_id',$user->id);
         }
 
         return $this->applyScopes($data);
@@ -118,7 +118,7 @@ class RemarksDataTable extends DataTable
                   ->printable(false)
                   ->addClass('text-center'),
             Column::make('id')->hidden(),
-            Column::make('user_id')->title(__("feedback::remarks.user_id")),
+            Column::make('user.first_name')->title(__("feedback::remarks.user_id")),
             Column::make('comment')->title(__("feedback::remarks.comment")),
             Column::make('created_at'),
             Column::make('updated_at')->hidden(),
