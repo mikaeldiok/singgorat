@@ -66,6 +66,7 @@
 @endpush
 
 @push ('after-scripts')
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
 <script type="text/javascript" src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>

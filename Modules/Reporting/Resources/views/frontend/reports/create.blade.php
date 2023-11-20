@@ -26,7 +26,7 @@
 
                         <div class="row mt-4">
                             <div class="col">
-                                {{ html()->form('POST', route("frontend.$module_name.store"))->class('form')->attributes(['enctype'=>"multipart/form-data"])->open() }}
+                                {{ html()->form('POST', route("frontend.$module_name.store"))->id('seratanku-form')->class('form')->attributes(['enctype'=>"multipart/form-data"])->open() }}
 
                                 @include ("reporting::frontend.$module_name.form")
 
@@ -40,7 +40,13 @@
                                     <div class="col-6">
                                         <div class="float-right">
                                             <div class="form-group">
-                                                {{ html()->button($text = "<i class='fas fa-plus-circle'></i> " . ucfirst("Buat Seratan") . "", $type = 'submit')->class('btn btn-success') }}
+                                                {{ html()->button($text = "<i class='fas fa-plus-circle'></i> " . ucfirst("Buat Seratan") . "", $type = 'submit')
+                                                        ->attributes([
+                                                            'data-sitekey'=> config('services.recaptcha.site_key') ,
+                                                            'data-callback'=>'onSubmit' ,
+                                                            'data-action'=>'submit'
+                                                        ])
+                                                        ->class('btn btn-success g-recaptcha') }}
                                             </div>
                                         </div>
                                     </div>
@@ -59,3 +65,12 @@
 
 
 @stop
+
+@push ('after-scripts')
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+   function onSubmit(token) {
+     document.getElementById("seratanku-form").submit();
+   }
+ </script>
+@endpush

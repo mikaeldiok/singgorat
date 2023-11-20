@@ -4,6 +4,7 @@ namespace Modules\Reporting\Http\Controllers\Frontend;
 
 use App\Authorizable;
 use App\Http\Controllers\Controller;
+use App\Rules\ReCaptchaRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -59,8 +60,6 @@ class ReportsController extends Controller
 
         $reports = $this->reportService->getAllReports()->data;
 
-        \Log::debug($reports);
-        \Log::debug(count($reports));
         //determine connections
         $connection = config('database.default');
         $driver = config("database.connections.{$connection}.driver");
@@ -133,6 +132,10 @@ class ReportsController extends Controller
         $module_icon = $this->module_icon;
         $module_model = $this->module_model;
         $module_name_singular = Str::singular($module_name);
+        
+        $request->validate([
+            'g-recaptcha-response' => ['required', new ReCaptchaRule]
+        ]); 
 
         $module_action = 'Store';
 
