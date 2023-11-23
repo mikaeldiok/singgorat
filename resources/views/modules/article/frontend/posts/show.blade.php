@@ -37,6 +37,20 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col">
+                                    <?php
+                                    $video_string = $$module_name_singular->ytvid;
+
+                                        if (strpos($video_string, 'youtu.be/') !== false) {
+                                           $video_string = str_replace("youtu.be/","www.youtube.com/embed/",$video_string);
+                                        } 
+
+                                        if (strpos($video_string, 'youtube.com/watch?v=') !== false) {
+                                           $video_string = str_replace("youtube.com/watch?v=","youtube.com/embed/",$video_string);
+                                        } 
+                                    ?>
+                                    @if($$module_name_singular->ytvid)
+                                        <iframe width="560" height="315" src="{{$video_string}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    @endif
                                     @if($$module_name_singular->featured_image)
                                         <img class="img-fluid" src="{{$$module_name_singular->featured_image}}" alt="{{$$module_name_singular->name}}">
                                     @endif

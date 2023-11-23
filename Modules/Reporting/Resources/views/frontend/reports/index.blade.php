@@ -33,8 +33,12 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card bg-white border-light shadow-soft p-4 rounded">
                         <div class="card-body p-0">
-                            <a href="{{$details_url}}" class="h3">{{$$module_name_singular->title}}</a>
-                            <h6 class="text-muted small font-weight-normal mb-0 ml-auto"><time datetime="{{$$module_name_singular->created_at}}">{{$$module_name_singular->created_at}}</time></h6>
+                            
+                            <?php
+                                $limitedString = \Str::limit($$module_name_singular->title, 30, '...')
+                            ?>
+                            <a href="{{$details_url}}" class="h3">{{$limitedString}}</a>
+                            <h6 class="text-muted small font-weight-normal mb-0 ml-auto"><time datetime="{{$$module_name_singular->created_at}}">{{$$module_name_singular->created_at->format('Y-m-d | H:i')}}</time></h6>
                             <br>
                             <p>
                                 {{$$module_name_singular->reporter}} - {{$$module_name_singular->kelas}}
