@@ -45,6 +45,12 @@
                                         } 
 
                                         if (strpos($video_string, 'youtube.com/watch?v=') !== false) {
+                                            
+                                            if (strpos($video_string, '&') !== false) {
+                                                $parts = explode('&', $video_string);
+                                                $video_string = $parts[0];
+                                            } 
+                                            
                                            $video_string = str_replace("youtube.com/watch?v=","youtube.com/embed/",$video_string);
                                         } 
                                     ?>
