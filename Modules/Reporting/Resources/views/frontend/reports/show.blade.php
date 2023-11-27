@@ -26,6 +26,12 @@
                                     {{$$module_name_singular->kelas  }}
                                 </span>
                             </div>
+                            
+                            <div class="post-meta">
+                                <span class="font-weight-bold mr-3">
+                                   {{$$module_name_singular->created_at->format('d M Y')}}                           
+                                </span>
+                            </div>
                             @include('frontend.includes.messages')
                         </div>
                     </div>
@@ -44,7 +50,7 @@
                     <hr>
                     <div class="text-left">
                         <h2 class="my-3">Tanggapan</h2>   
-                        @if($$module_name_singular->remarks)  
+                        @if(count($$module_name_singular->remarks) > 0)  
                             @foreach($$module_name_singular->remarks as $remark)
                                 <div class="row m-2">
                                     <div class="col-lg-12">
@@ -61,7 +67,7 @@
                             @endforeach
                         @else
                             <p>
-                                No Comments
+                                Belum ada tanggapan
                             </p>
                         @endif
                         

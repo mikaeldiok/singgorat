@@ -53,7 +53,7 @@ Route::group(['namespace' => '\Modules\Reporting\Http\Controllers\Frontend', 'as
     $module_name = 'reports';
     $controller_name = 'ReportsController';        
     Route::resource("$module_name", "$controller_name");
-    Route::get("/artikel", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
+    Route::get("/artikel", ['as' => "$module_name.index", 'uses' => "$controller_name@indexPaginated"]);
     Route::get("$module_name/catalog/filter", ['as' => "$module_name.filterReports", 'uses' => "$controller_name@filterReports"]);
     Route::get("$module_name/{id}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
 });

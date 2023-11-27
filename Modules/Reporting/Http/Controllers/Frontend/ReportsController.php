@@ -172,19 +172,18 @@ class ReportsController extends Controller
 
         $module_action = 'Index';
 
-        $reports = $this->reportService->getPaginatedReports(20,$request)->data;
+        $reports = $this->reportService->getPaginatedReports(9,$request)->data;
         
         if ($request->ajax()) {
-            return view("reporting::frontend.$module_name.reports-card-loader", ['reports' => $reports])->render();  
+            return view(
+                "reporting::frontend.$module_name.index-content",
+                compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "reports")
+            );
         }
         
-        //determine connections
-        $connection = config('database.default');
-        $driver = config("database.connections.{$connection}.driver");
-       
         return view(
             "reporting::frontend.$module_name.index",
-            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "reports",'driver')
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "reports")
         );
     }
 

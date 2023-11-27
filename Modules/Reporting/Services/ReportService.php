@@ -130,8 +130,9 @@ class ReportService{
 
         }
 
-        $report = $report->paginate($pagination);
+        $report = $report->available()->paginate($pagination);
         
+        \Log::debug($report);
         return (object) array(
             'error'=> false,            
             'message'=> '',
