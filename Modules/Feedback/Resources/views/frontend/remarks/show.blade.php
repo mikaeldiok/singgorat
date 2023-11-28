@@ -35,7 +35,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <p>
-                                        Halaman ini berisikan kumpulan seratan siswa
+                                        Kumpulan karya siswa dan siswi SMKN1 Kokap
                                     </p>                                
                                 </div>
                             </div>

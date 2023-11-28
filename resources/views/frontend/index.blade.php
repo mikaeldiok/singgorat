@@ -28,19 +28,14 @@
   <div class="site-section section-counter">
     <div class="container">
       <div class="row" id="get-started">
-       @if(user_registration())
-        <div class="col-md-6 border rounded-lg border-primary p-4 welcome-text">
-          <h2 class="display-4 mb-3">Sampaikan cerita anda</h2>
-          <p class="lead">Mulai menyampaikan cerita anda dan ikuti proses kami dalam menanggapi cerita anda</p>
-          <p class="mb-4">Untuk melacak proses dibutuhkan akun. Anda akan diminta untuk membuat akun untuk mulai melihat proses cerita anda</p>
-          <p class="mb-0"><a href="{{route('backend.reports.create')}}" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-right"></i></a></p>
-        </div>
-      @endif
-        <div class="col-md-6 p-4 {{!user_registration() ? 'border rounded-lg border-primary' : ''}} welcome-text">
+        <div class="col-md-6 p-4 welcome-text">
           <h2 class="display-4 mb-3">Buat Seratan</h2>
           <p class="lead">Mulai membuat seratan dan dapatkan feedback dari para pendamping</p>
           <p class="mb-4"></p>
           <p class="mb-0"><a href="{{route('frontend.reports.create')}}" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-right"></i></a></p>
+        </div>
+        <div class="col-md-6">
+            <img src="images/girl-writing.webp" alt="Girl Writing" style="width: 100%;" />
         </div>
       </div>
     </div>

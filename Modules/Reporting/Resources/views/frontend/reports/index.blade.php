@@ -7,25 +7,27 @@
 <div class="block-31" style="position: relative;">
   <div class="bg-primary header-bg"></div>
 </div>
+<div class="text-center">
+    <div class="shadow-soft flex-md-row no-gutters p-4 justify-content-center" style="background: linear-gradient(to bottom, #FF8400, #DB3604);">
+        <div class="text-center text-white">
+            <h1 class="font-weight-bold">Seratan Siswa</h1>
+            <p>
+                Kumpulan karya siswa dan siswi SMKN1 Kokap
+            </p>
+        </div>
+        <div class="d-flex align-items-center">
+
+            <a href="'/'"><h6 class="text-muted small ml-2 mb-0"></h6></a>
+
+        </div>
+    </div>
+</div>
 
 <section class="py-3 bg-dark-red-shade">
+    
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 mb-5  text-center">
-                <div class="card bg-white border-light shadow-soft flex-md-row no-gutters p-4 justify-content-center">
-                    <div class="text-center">
-                        <h1>Seratan Siswa</h1>
-                        <p>
-                            Halaman ini berisikan kumpulan seratan siswa
-                        </p>
-                    </div>
-                    <div class="d-flex align-items-center">
-
-                        <a href="'/'"><h6 class="text-muted small ml-2 mb-0"></h6></a>
-
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 

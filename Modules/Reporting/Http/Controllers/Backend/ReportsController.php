@@ -210,6 +210,29 @@ class ReportsController extends Controller
         );
     }
 
+    public function showRemarks($id)
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $module_action = 'Show';
+
+        $reports = $this->reportService->edit($id);
+
+        $$module_name_singular = $reports->data;
+
+        $options = $this->reportService->prepareOptions();
+        
+        return view(
+            "reporting::backend.$module_name.show-remarks",
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "$module_name_singular",'options')
+        );
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

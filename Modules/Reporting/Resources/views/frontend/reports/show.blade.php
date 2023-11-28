@@ -52,18 +52,7 @@
                         <h2 class="my-3">Tanggapan</h2>   
                         @if(count($$module_name_singular->remarks) > 0)  
                             @foreach($$module_name_singular->remarks as $remark)
-                                <div class="row m-2">
-                                    <div class="col-lg-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5>{{$remark->user->first_name}} {{$remark->user->last_name}}</h5>
-                                                <p>
-                                                {{$remark->comment}}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @include("feedback::components.remark-block")
                             @endforeach
                         @else
                             <p>

@@ -35,23 +35,47 @@
 
                 @include ("reporting::backend.$module_name.form-show")
                 
-                @can('edit_reports')
-                <div class="row">
-                    <div class="col-4">
-                        <div class="form-group">
-                            {{ html()->submit($text = icon('fas fa-save')." Save Status")->class('btn btn-success') }}
-                        </div>
-                    </div>
-
-                    <div class="col-8">
-                        <div class="float-right">
-                            <a href="{{ route("backend.$module_name.index") }}" class="btn btn-warning" data-toggle="tooltip" title="{{__('labels.backend.cancel')}}"><i class="fas fa-reply"></i> Cancel</a>
-                        </div>
-                    </div>
-                </div>
-                @endcan
 
                 {{ html()->form()->close() }}
+               <hr>
+                <div class="row mt-4">
+                    <div class="col">
+                        
+                        <h3>Tulis Tanggapan</h3>  
+                        {{ html()->form('POST', route("backend.remarks.store"))->class('form')->attributes(['enctype'=>"multipart/form-data"])->open() }}
+
+                        @include ("feedback::backend.remarks.form")
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    {{ html()->button($text = "<i class='fas fa-message'></i> " . ucfirst("Send") . "", $type = 'submit')->class('btn btn-success') }}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="float-right">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-warning" onclick="history.back(-1)"><i class="fas fa-reply"></i> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{ html()->form()->close() }}
+
+                    </div>
+                </div>    
+                <hr>
+                <h3>Tanggapan Anda</h3>   
+                @if($$module_name_singular->remarks)  
+                    @foreach($$module_name_singular->selectedRemarks as $remark)
+                        @include("feedback::components.remark-block")
+                    @endforeach
+                @else
+                    <p>
+                        No Comments
+                    </p>
+                @endif
                 
             </div>
         </div>

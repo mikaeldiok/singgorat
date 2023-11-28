@@ -140,7 +140,7 @@ class RemarksController extends Controller
             Flash::error("<i class='fas fa-times-circle'></i> Error When ".$module_action." '".Str::singular($module_title)."'")->important();
         }
 
-        return redirect("admin/reports/".$report_id);
+        return redirect("admin/remarking/".$report_id);
     }
 
     /**

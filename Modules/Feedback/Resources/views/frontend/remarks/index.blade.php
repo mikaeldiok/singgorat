@@ -22,7 +22,7 @@
                     <div class="text-center">
                         <h1>Seratan Siswa</h1>
                         <p>
-                            Halaman ini berisikan kumpulan seratan siswa
+                            Kumpulan seratan siswa
                         </p>
                     </div>
                     <div class="d-flex align-items-center">
