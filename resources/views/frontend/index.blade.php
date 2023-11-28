@@ -28,7 +28,7 @@
   <div class="site-section section-counter">
     <div class="container">
       <div class="row" id="get-started">
-        <div class="col-md-6 p-4 welcome-text">
+        <div class="col-md-6 p-4  welcome-text">
           <h2 class="display-4 mb-3">Buat Seratan</h2>
           <p class="lead">Mulai membuat seratan dan dapatkan feedback dari para pendamping</p>
           <p class="mb-4"></p>
