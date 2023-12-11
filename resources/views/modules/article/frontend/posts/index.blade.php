@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row d-flex">
                 
-        @if(count($$module_name))
+        @if(count($$module_name) > 0)
             <div class="container mt-n7 mt-lg-n12 z-2">
                 <div class="row d-flex">
                     @php
@@ -94,6 +94,20 @@
 
                 <div class="d-flex justify-content-center w-100 mt-3">
                     {{$$module_name->links()}}
+                </div>
+            </div>
+        @else
+        <div class="container mt-n7 mt-lg-n12 z-2">
+                <div class="row d-flex">
+                    <div class="col-lg-12 mb-5 text-center p-5">
+                        <div class="card bg-white border-light shadow-soft flex-md-row no-gutters p-4">
+                            <div class="card-body d-flex flex-column justify-content-between col-auto py-4 p-lg-2">
+                                <h3>
+                                    Belum ada artikel yang dipublikasi
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endif

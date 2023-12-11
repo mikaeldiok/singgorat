@@ -73,7 +73,88 @@ class UserController extends Controller
             compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular', 'page_heading', 'title')
         );
     }
+ /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function indexGuru()
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
 
+        $module_action = 'List';
+
+        $page_heading = ucfirst($module_title);
+        $title = $page_heading.' '.ucfirst($module_action);
+
+        $$module_name = $module_model::whereHas('roles', function ($query) {
+            $query->where('name', 'guru');})->paginate();
+
+        Log::debug($$module_name);
+        
+        Log::info("'$title' viewed by User:".auth()->user()->name.'(ID:'.auth()->user()->id.')');
+
+        return view(
+            "backend.$module_path.guru.index_datatable",
+            compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular', 'page_heading', 'title')
+        );
+    }
+
+    public function index_data_guru()
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $module_action = 'List';
+
+        $$module_name = $module_model::select('id', 'name', 'username', 'email', 'email_verified_at', 'updated_at', 'status')
+                                        ->whereHas('roles', function ($query) {
+                                            $query->where('name', 'guru');});
+
+        $data = $$module_name;
+
+        return Datatables::of($$module_name)
+                        ->addColumn('action', function ($data) {
+                            $module_name = $this->module_name;
+
+                            return view('backend.includes.user_guru_actions', compact('module_name', 'data'));
+                        })
+                        ->addColumn('user_roles', function ($data) {
+                            $module_name = $this->module_name;
+
+                            return view('backend.includes.user_roles', compact('module_name', 'data'));
+                        })
+                        ->editColumn('name', '<strong>{{$name}}</strong>')
+                        ->editColumn('status', function ($data) {
+                            $return_data = $data->status_label;
+                            $return_data .= '<br>'.$data->confirmed_label;
+
+                            return $return_data;
+                        })
+                        ->editColumn('updated_at', function ($data) {
+                            $module_name = $this->module_name;
+
+                            $diff = Carbon::now()->diffInHours($data->updated_at);
+
+                            if ($diff < 25) {
+                                return $data->updated_at->diffForHumans();
+                            } else {
+                                return $data->updated_at->isoFormat('LLLL');
+                            }
+                        })
+                        ->rawColumns(['name', 'action', 'status', 'user_roles'])
+                        ->orderColumns(['id'], '-:column $1')
+                        ->make(true);
+    }
     public function index_data()
     {
         $module_title = $this->module_title;
@@ -187,6 +268,30 @@ class UserController extends Controller
         );
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function createGuru()
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $module_action = 'Create';
+
+        $roles = Role::get();
+        $permissions = Permission::select('name', 'id')->get();
+
+        return view(
+            "backend.$module_name.guru.create",
+            compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular', 'roles', 'permissions')
+        );
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -608,6 +713,43 @@ class UserController extends Controller
         );
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function editGuru($id)
+    {
+        if (!auth()->user()->can('edit_users')) {
+            abort(404);
+        }
+
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $module_action = 'Edit';
+
+        $$module_name_singular = $module_model::findOrFail($id);
+
+        $userRoles = $$module_name_singular->roles->pluck('name')->all();
+        $userPermissions = $$module_name_singular->permissions->pluck('name')->all();
+
+        $roles = Role::get();
+        $permissions = Permission::select('name', 'id')->get();
+
+        Log::info(label_case($module_title.' '.$module_action)." | '".$$module_name_singular->name.'(ID:'.$$module_name_singular->id.") ' by User:".auth()->user()->name.'(ID:'.auth()->user()->id.')');
+
+        return view(
+            "backend.$module_name.guru.edit",
+            compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular', "$module_name_singular", 'roles', 'permissions', 'userRoles', 'userPermissions')
+        );
+    }
     /**
      * Update the specified resource in storage.
      *

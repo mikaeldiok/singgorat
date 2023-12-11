@@ -31,6 +31,20 @@ class GenerateMenus
                 'class' => 'c-sidebar-nav-link',
             ]);
 
+            // Submenu: Users
+            $menu->add('<i class="c-sidebar-nav-icon fas fa-user-tie"></i> Guru', [
+                'route' => 'backend.users.indexGuru',
+                'class' => 'nav-item',
+            ])
+            ->data([
+                'order'         => 6,
+                'activematches' => 'admin/users*',
+                'permission'    => ['view_users'],
+            ])
+            ->link->attr([
+                'class' => 'c-sidebar-nav-link',
+            ]);
+
             // Separator: Access Management
             $menu->add('Management', [
                 'class' => 'c-sidebar-nav-title',
