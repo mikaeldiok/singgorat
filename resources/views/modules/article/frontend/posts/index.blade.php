@@ -7,10 +7,10 @@
   <div class="bg-primary header-bg"></div>
 </div>
 
-<div class="text-center">
-    <div class="shadow-soft flex-md-row no-gutters p-4 justify-content-center" style="background: linear-gradient(to bottom, #FF8400, #DB3604);">
+<div class="text-center seratan-siswa-section">
+    <div class="shadow-soft flex-md-row no-gutters p-4 justify-content-center">
         <div class="text-center text-white">
-            <h1 class="font-weight-bold">Artikel dan Materi</h1>
+            <h1 class="font-weight-bold text-white">Artikel dan Materi</h1>
             <p>
                 Materi dan referensi Belajar
             </p>
@@ -117,4 +117,33 @@
     </div>       
 </section>
 @endsection
+
+@push('after-styles')
+
+<style>
+        .seratan-siswa-section {
+        position: relative;
+        background-image: url('https://publicdomainpictures.net/pictures/30000/velka/fundo-azul.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 50px;
+        /* Add a dark overlay */
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for darkness */
+        }
+        
+        .text-center {
+            position: relative;
+            z-index: 1;
+        }
+    }
+</style>
+@endpush
 

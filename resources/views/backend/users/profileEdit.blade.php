@@ -122,7 +122,6 @@
                             {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
                         </div>
                     </div>
-
                 </div>
 
 
